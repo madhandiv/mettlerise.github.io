@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../config';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const courses = await getCollection('courses');
+  return courses.map(course => ({
+    params: { slug: course.slug },
+    props: { course }
+  }));
+}
+
+const { course } = Astro.props;
+const { Content } = await course.render();
+---
+
+<BaseLayout title={`${course.data.title} - ${siteConfig.company.name}`} description={course.data.description}>
+  <div class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-12">
+    <div class="container mx-auto px-4">
+      <div class="breadcrumbs text-sm text-white/80 mb-4">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/training">Training</a></li>
+          <li>{course.data.title}</li>
+        </ul>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="badge badge-accent">{course.data.level}</div>
+            {course.data.featured && (
+              <div class="badge badge-secondary">Featured Course</div>
+            )}
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">{course.data.title}</h1>
+          <p class="text-xl text-white/90 mb-6">{course.data.description}</p>
+
+          <div class="flex flex-wrap gap-2">
+            {course.data.technologies.map(tech => (
+              <span class="badge badge-lg badge-outline border-white/30 text-white">{tech}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="md:col-span-1">
+          <div class="card bg-base-100 shadow-2xl sticky top-24">
+            <div class="card-body">
+              <h3 class="card-title text-xl border-b border-base-300 pb-3">Course Details</h3>
+
+              <div class="space-y-4 mt-4">
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div>
+                    <p class="text-sm text-base-content/60">Duration</p>
+                    <p class="font-semibold">{course.data.duration}</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <div>
+                    <p class="text-sm text-base-content/60">Schedule</p>
+                    <p class="font-semibold">{course.data.schedule}</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <div>
+                    <p class="text-sm text-base-content/60">Level</p>
+                    <p class="font-semibold">{course.data.level}</p>
+                  </div>
+                </div>
+
+                <div class="divider my-2"></div>
+
+                <div class="text-center">
+                  <p class="text-3xl font-bold text-success mb-2">{course.data.fees}</p>
+                  <p class="text-sm text-base-content/60">Course Fee</p>
+                </div>
+
+                <div class="divider my-2"></div>
+
+                <a href={`mailto:${siteConfig.company.email}?subject=Enrollment Inquiry: ${course.data.title}`} class="btn btn-primary btn-block">
+                  Enroll Now
+                </a>
+
+                <a href={`mailto:${siteConfig.company.email}?subject=Course Inquiry: ${course.data.title}`} class="btn btn-outline btn-block">
+                  Ask a Question
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-16 bg-base-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-base-200">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">
+        Join our program today and take the first step towards a successful tech career.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href={`mailto:${siteConfig.company.email}?subject=Enrollment: ${course.data.title}`} class="btn btn-primary btn-lg">
+          Enroll in This Course
+        </a>
+        <a href="/training" class="btn btn-outline btn-lg">Browse Other Courses</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

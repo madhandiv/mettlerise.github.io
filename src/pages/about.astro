@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+---
+
+<BaseLayout title={`About Us - ${siteConfig.company.name}`}>
+  <div class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-16">
+    <div class="container mx-auto px-4 text-center text-white">
+      <h1 class="text-5xl font-bold mb-4">About Us</h1>
+      <p class="text-xl max-w-3xl mx-auto">
+        Learn more about our journey, mission, and the team behind {siteConfig.company.name}.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-base-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-6 text-center">Our Story</h2>
+        <div class="prose prose-lg max-w-none text-center mb-12">
+          <p class="text-lg leading-relaxed">
+            {siteConfig.company.name} was founded with a vision to bridge the gap between
+            academic learning and industry requirements. We are passionate about empowering
+            individuals and organizations through technology and education.
+          </p>
+          <p class="text-lg leading-relaxed mt-4">
+            Based in {siteConfig.company.location}, we serve clients and students across India,
+            delivering cutting-edge software solutions and comprehensive training programs that
+            prepare the next generation of tech professionals.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <div class="card bg-base-200 shadow-lg">
+            <div class="card-body text-center">
+              <div class="text-4xl mb-4">🎯</div>
+              <h3 class="card-title justify-center text-xl mb-2">Our Mission</h3>
+              <p class="text-base-content/70">
+                To deliver exceptional software solutions and create skilled tech professionals
+                who drive innovation in the industry.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-200 shadow-lg">
+            <div class="card-body text-center">
+              <div class="text-4xl mb-4">👁️</div>
+              <h3 class="card-title justify-center text-xl mb-2">Our Vision</h3>
+              <p class="text-base-content/70">
+                To be the leading technology partner and training provider, known for
+                excellence and innovation in everything we do.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-base-200 shadow-lg">
+            <div class="card-body text-center">
+              <div class="text-4xl mb-4">💎</div>
+              <h3 class="card-title justify-center text-xl mb-2">Our Values</h3>
+              <p class="text-base-content/70">
+                Excellence, integrity, innovation, and commitment to student and client success
+                guide everything we do.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-base-200">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">Meet Our Founder</h2>
+
+        <div class="card lg:card-side bg-base-100 shadow-2xl">
+          <figure class="lg:w-1/3 bg-gradient-to-br from-slate-800 to-blue-900 p-8 flex items-center justify-center">
+            <div class="avatar placeholder">
+              <div class="bg-neutral text-neutral-content rounded-full w-48">
+                <span class="text-6xl">{siteConfig.founder.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+            </div>
+          </figure>
+          <div class="card-body lg:w-2/3">
+            <h3 class="card-title text-3xl">{siteConfig.founder.name}</h3>
+            <p class="text-primary font-semibold text-lg">{siteConfig.founder.role}</p>
+
+            <div class="divider"></div>
+
+            <p class="text-base-content/80 text-lg leading-relaxed">
+              {siteConfig.founder.bio}
+            </p>
+
+            <p class="text-base-content/80 leading-relaxed mt-4">
+              With a passion for technology and education, {siteConfig.founder.name.split(' ')[0]} founded
+              {siteConfig.company.name} to create opportunities for aspiring tech professionals
+              and help businesses leverage technology for growth.
+            </p>
+
+            <p class="text-base-content/80 leading-relaxed mt-4">
+              Under {siteConfig.founder.name.split(' ')[0]}'s leadership, {siteConfig.company.name} has
+              successfully trained hundreds of students and delivered innovative software solutions
+              to clients across various industries.
+            </p>
+
+            <div class="card-actions justify-start mt-6">
+              <a
+                href={siteConfig.founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="fill-current">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                Connect on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-base-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">What We Offer</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card bg-gradient-to-br from-blue-900 to-slate-800 text-white shadow-xl">
+            <div class="card-body">
+              <h3 class="card-title text-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                Software Development
+              </h3>
+              <ul class="space-y-2 mt-4">
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Custom web and mobile applications</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Enterprise software solutions</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Cloud migration and modernization</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>API development and integration</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Technical consulting and architecture</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-br from-slate-800 to-teal-900 text-white shadow-xl">
+            <div class="card-body">
+              <h3 class="card-title text-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                </svg>
+                Training & Internships
+              </h3>
+              <ul class="space-y-2 mt-4">
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Full-stack development programs</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Data science and Python training</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Hands-on internship projects</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Career guidance and mentorship</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-2xl">✓</span>
+                  <span>Placement assistance</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-base-200">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">Get in Touch</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h3 class="card-title text-2xl mb-4">Contact Information</h3>
+
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div>
+                    <p class="font-semibold">Address</p>
+                    <p class="text-base-content/70">{siteConfig.company.address}</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <div>
+                    <p class="font-semibold">Email</p>
+                    <a href={`mailto:${siteConfig.company.email}`} class="text-primary hover:underline">
+                      {siteConfig.company.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                  <div>
+                    <p class="font-semibold">LinkedIn</p>
+                    <a href={siteConfig.founder.linkedin} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                      Connect with us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h3 class="card-title text-2xl mb-4">Send Us a Message</h3>
+              <p class="text-base-content/70 mb-4">
+                Have questions about our services or training programs? We'd love to hear from you!
+              </p>
+              <a href={`mailto:${siteConfig.company.email}`} class="btn btn-primary btn-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Email Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
